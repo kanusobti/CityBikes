@@ -1,3 +1,30 @@
+PSEUDOCODE
+
+    Create homepage which hits the city bike API and pull all the countries having city bikes available for sharing.
+    Fetch Image urls for all these countries.
+    By default show the details for the first country in the list.
+    When user clicks on a country flag, pull all the information for that particular country.
+
+MVP:
+Display count of total available bikes and the possible total availability.
+Display bike availabilty percentage and change colors on percentage value.
+Show the data for the default country.
+    
+Design Decisions: Used Sass for styling.
+### For installing Sass use: `npm install node-sass`
+### For API calls I used axios: `npm i axios`
+I kept my App.js lean where I am loading my Cities component. All the logic is built in Cities component.
+On my `componentDidMount` method call, I am calling the api and fetching all the unique countries from the result set.
+At this step, I also load the default country which I assumed to be the first country in the array.
+Set the states where I pass the unique countries and default country to be used in my render function to build the flags url and show the flags on the screen.
+Also attached the `onClick` event on the flag images. This event would call `loadCitiesForCountry` function where it will pass the corressponding CountryCode. Based on this country code/default country code, I fetched all the unique network_ids and started calling the next api to pull the stations and cities and bike availability. I parsed the result from this API to calculate the Totals and later render them on the screen.
+
+While testing it out for multiple countries there were few nodes which weren't exposing arrays as defined in the JSON structure. In order to avoid the runtime error due to bad data, I ended up writing few conditions which look like this below:
+
+`resultNew.data.network.company === undefined ||
+          resultNew.data.network.company === null ||
+          typeof resultNew.data.network.company === "string"`
+    
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

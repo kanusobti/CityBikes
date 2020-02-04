@@ -1,26 +1,18 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+// import './App.css';
+import "./styles/App.scss";
+import axios from "axios";
+import Cities from "./Cities";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  ///this s the constructor method. it is run once at the beginning of the component lifecycle. it is used to set initial state
+  render() {
+    return (
+      <div className="App">        
+        <Cities />
+      </div>
+    );
+  }
 }
 
 export default App;
